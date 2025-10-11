@@ -1,0 +1,26 @@
+# CSS - Bomb Ending
+DISABLEPLAYER {CI} WARHEAD
+WAIT SEC 3
+
+WinCheck:
+WAIT MIL 500
+GOTO TerroristWin $IF {WARHEAD:ISDETONATED} = TRUE
+GOTO TerroristWin $IF {MTF} <= 0
+GOTO CTWin $IF {WARHEAD:ISARMED} = FALSE
+GOTO WinCheck
+
+TerroristWin:
+COMMAND /audio play 1 /home/container/.config/EXILED/Configs/Sounds/T_win.ogg
+ROUND UNLOCK
+CLEARCASSIE
+STOP CSS
+STOP
+
+CTWin:
+COMMAND /audio play 1 /home/container/.config/EXILED/Configs/Sounds/CT_Win.ogg
+KILL {CI} Bomb was defused.
+ROUND UNLOCK
+ROUND END
+CLEARCASSIE
+STOP CSS
+STOP
