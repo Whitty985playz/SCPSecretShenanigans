@@ -1,0 +1,118 @@
+# DOCTOR INFECTION
+
+# Player Spawn Setup
+LOCAL {SCI} {PLAYERS}/2
+
+SPAWNRULE Scientist {MATH-ROUND:SCI:DOWN}
+SPAWNRULE ClassD
+
+WAIT UNTIL {ROUND:STARTED} = TRUE
+
+# MAP CONFIGURATION
+CLEANUP ITEMS
+CLEARINVENTORY *
+DISABLE RESPAWNS
+DISABLE DROPPING
+
+# DOOR LOCKS
+DOOR OPEN Scp914Gate
+DOOR LOCK Scp914Gate
+DOOR OPEN GR18Gate
+DOOR LOCK GR18Gate
+DOOR OPEN Scp914Gate
+DOOR LOCK Scp914Gate
+DOOR LOCK Scp330
+DOOR LOCK Scp330Chamber
+
+# LOCKDOWN CHECKPOINTS
+WAIT SEC 1
+
+DOOR LOCK CheckpointLczA
+DOOR LOCK CheckpointLczB
+
+# DOCTOR INFECTED
+WAIT SEC {RANDOM:INT:6:15}
+
+# MAKE INFECTED PLAYER
+GLOBALPLAYERVAR SET {DR} {LIMIT:PLAYERS:1}
+
+EFFECT ADD {DR} DamageReduction 25
+
+
+EFFECT ADD {DR} Slowness 25
+WAIT SEC 3
+EFFECT ADD {DR} Slowness 45
+WAIT SEC 3
+EFFECT ADD {DR} Slowness 75
+EFFECT ADD {DR} Deafened 255
+WAIT SEC 3
+EFFECT ADD {DR} Slowness 95
+
+WAIT SEC 5
+EFFECT ADD {DR} Blurred 255
+EFFECT ADD {DR} CardiacArrest
+
+WAIT UNTIL {GET:DR:ROLE} = Spectator
+
+# SPAWN INFECTION
+SETROLE {DR} Scp049 TRUE TRUE
+
+INFECTRULE ClassD Scp049 TRUE
+INFECTRULE Scientist Scp049 TRUE
+
+WAIT SEC 2
+
+# Dr Infected - Hint
+HINT {DR} 25 <size=55><align="left"><b>> You are the <color=red>Infected Doctor</color> <br><br><size=20>Make your way to Light Containment and wait at the Checkpoint<br>Each person has 1 Adrenaline, Medkit & Hat<br><color=yellow><u>Infect every human within 10 minutes to win the event</u></b> 
+CUSTOMINFO SET {DR} (INFECTED)
+EFFECT ADD {DR} SilentWalk 255
+
+WAIT SEC {RANDOM:INT:5:10}
+
+# CASSIE Virus Announcement
+CASSIE LOUD ATTENTION . BIOLOGICAL HAZARD INDENTIFIED . VIRUS CODE PROTOCOL .G3 INITIATED . ALL PERSONNEL LOOK FOR SAFE AREAS IN LIGHT CONTAINMENT .G6 IMMEDIATELY .|<color=red>Attention - <size=0>//////////////////////////////////////////</size>Biological hazard identified.</color><size=0>///////////////////////////</size><split>Virus Code Protocol initiated.<size=0>////////////////////////////////////</size><split>All personnel look for safe areas in Light Containment immediately.
+
+WAIT UNTIL {CASSIESPEAKING} = FALSE
+
+# Humans - Role Hint
+HINT {HUMANS} 30 <size=55><align="right"><b>You are <color=yellow>Not Infected</color> <<br><br><size=20>Please take a look at your new items<br>Keep away from Infected Doctors<br><color=lightblue><u>Survive 10 minutes for your only chance to win</u></b>
+
+# Inventory & Countdown Timer
+WAIT SEC 1
+COUNTDOWN * 180 <br><size=55><color=yellow><b>Doctor Infection
+
+ITEM ADD {HUMANS} Medkit
+ITEM ADD {HUMANS} Radio
+ITEM ADD {HUMANS} Painkillers
+ITEM ADD {HUMANS} Adrenaline
+ITEM ADD {HUMANS} SCP268
+
+WAIT SEC 165
+CASSIE LOUD jam_019_6 ATTENTION . .G3 CHECKPOINT jam_045_7 DOOR MALFUNCTION . jam_054_3 EMERGENCY LOCKDOWN jam_053_6 jam_035_9 INITIATED .|<color=red>ATTENTION - <size=0>///////////////////////////////////////////////</size>CHECKPOINT DOOR MALFUNCTION</color><size=0>/////</size><split>EMERGENCY LOCKDOWN LOCKDOWN INITATED
+WAIT SEC 8
+ELEVATOR LOCK LczA
+ELEVATOR LOCK LczB
+LIGHTSOFF * 1
+DOOR OPEN CheckpointLczA
+DOOR OPEN CheckpointLczB
+
+WAIT UNTIL {CASSIESPEAKING} = FALSE
+COUNTDOWN {HUMANS} 420 <br><size=55><color=red><b>SURVIVE 7 MINUTES
+
+WAIT SEC 410
+CASSIE LOUD EXTERNAL DOOR SYSTEM jam_008_7 .G1 .G4 UNAUTHORIZED yield_01 .G3 pitch_1.15 UNAUTHORIZED pitch_1.00 yield_02 .G6 pitch_1.35 UNAUTHORIZED pitch_1.00 yield_01 .G3 .G5 CHECKPOINT GATE DOOR SYSTEM .G5 OVERRIDE SUCCESSFUL . EVACUATE .G3 jam_026_7 NOW|External Door System successfully reactivated.<split><color=red><b>> UNAUTHORISED<split><color=orange><b>> UN@UTH0R1S3D<split><color=yellow><b>> ############<split><color=yellow></b>CHECKPOINT GATE DOOR SYSTEM OVERRIDE SUCCESSFUL<size=0>//////////////////////////////////////////////////</size><split><color=red>EVACUATE NOW
+
+WAIT UNTIL {CASSIESPEAKING} = FALSE
+HINT * 30 <size=55><b>> <color=green>Your Chance</color> has Arrived <<br><br><size=20>You now have <color=yellow>SCP-207</color><br>Every Checkpoint & <color=yellow>Gate-B</color> has permanently opened<br><color=lightblue><u>Be the first to escape without dying to win the event</u></color>
+
+DOOR OPEN CheckpointEzHczA
+DOOR LOCK CheckpointEzHczA
+DOOR OPEN CheckpointEzHczB
+DOOR LOCK CheckpointEzHczB
+
+DOOR OPEN GateB
+DOOR LOCK GateB
+
+ITEM ADD {HUMANS} SCP207
+
+GLOBALPLAYERVAR REMOVE {DR}
