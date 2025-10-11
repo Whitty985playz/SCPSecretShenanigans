@@ -1,0 +1,8 @@
+# Job Jumpscare
+
+EFFECT ADD * Scanned 1 5
+
+WAIT MIL 3100
+
+EFFECT ADD * Flashed 255 1
+HINT * 2 <color=black><b><align="center"><size=50>EMPLOYMENT
