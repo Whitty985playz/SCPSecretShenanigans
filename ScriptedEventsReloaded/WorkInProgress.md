@@ -1,5 +1,5 @@
 # ⚠️ | Work In Progress
-All of the scripts in this folder were used making a pre-release of Scripted Events Reborn -- things are subject to change.
+All of the scripts in this folder were made using a pre-release of Scripted Events Reborn -- things are subject to change.
 
 ## ℹ️ | Active Script State:
 
