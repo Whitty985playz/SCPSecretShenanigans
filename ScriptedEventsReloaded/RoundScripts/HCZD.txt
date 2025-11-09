@@ -1,0 +1,89 @@
+# PLUGINS/DEPENDENCIES USED:
+# SER, NCalc, SER_AudioPlayerAPI_bind, SEREK
+
+!-- OnEvent RoundStarted
+
+CreateGlobalSpeaker "Cassie_HCZD" 1.5
+LoadAudio "audioDirectory\HeavyDecon.ogg" "HCZD"
+
+$hczdeconttime = RandomNum 1 5 int
+
+Print "[W9 - DEBUG] $hczdeconttime Value is: {$hczdeconttime}"
+
+$waitTimeInitial = RandomNum 30 240 int
+
+Print "[W9 - DEBUG] $waitTimeInitial Value is: {$waitTimeInitial}"
+
+$waitTimeFinal = Eval ($waitTimeInitial + 480)
+
+Print "[W9 - DEBUG] $waitTimeFinal Value is: {$waitTimeFinal}"
+
+Wait {ToDuration $waitTimeFinal Seconds}
+
+
+if $hczdeconttime == 1
+	Cassie Jingle "ATTENTION . INTERNAL jam_017_3 FIRE .G3 IN HEAVY CONTAINMENT . EXTINGUISHMENT SYSTEMS .G4 FAILED . UNNECESSARY EMERGENCY DECONTAMINATION .g1 COMMENCING IN TMINUS yield_01 1 minute ." "Attention - <size=0>/////////////////////////////////////////////</size>Internal Fire in <color=yellow>Heavy Containment.</color><size=0>///////////////////////////////////////////////////////////////////////////////////</size><split>Extinguishment systems failed.<size=0>///////////////////////////////////////////////////////////////////////////////////////</size><split><color=red>Unnecessary Emergency Decontamination</color> commencing in T-<size=0>///////////////////////////////////////////////////////////////////</size>1 minute."
+	Wait 30s
+	PlayAudio "Cassie_HCZD" "HCZD"
+	Cassie NoJingle "ad . . . . . . . . . . . . . ad" "Attenion - <size=0>/////////////////////////////////////////////</size>Biological hazard identified.<size=0>//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</size><br>> Immediate evacuation of Heavy Containment required.<size=0>//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</size> <color=yellow>Checkpoints included.</color><size=0>//////////////////////////////////////////////////////////////////////</size><br>> Subsystem engaged.<size=0>////////////////////////////////////////////////////////////////////////</size><br>> Commencing <color=red>decontamination</color> in T-<size=0>//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</size>30 seconds."
+	
+	Wait 17s
+	OpenDoor HeavyContainment
+	OpenDoor HczCheckpoint
+	LockDoor HeavyContainment DecontEvacuate 
+	LockDoor HczCheckpoint DecontEvacuate 
+	
+	Wait 38s
+	CloseDoor HeavyContainment
+	CloseDoor HczCheckpoint
+	LockDoor HeavyContainment DecontLockdown
+	LockDoor HczCheckpoint DecontLockdown
+	
+	TransitionLightColor HeavyContainment #666699 1s
+	TransitionLightColor HeavyContainment #FFFFFF 10s
+	
+	Wait 3s
+	GiveEffect @heavyContainmentPlayers Deafened 255
+	GiveEffect @heavyContainmentPlayers Blurred
+	
+	Wait 1s
+	GiveEffect @heavyContainmentPlayers Decontaminating 255
+	
+	Cassie Jingle "UNNECESSARY .G4 DECONTAMINATION PROCESS INITIATED . FIRE EXTINGUISHMENT STATUS .G6 jam_043_3 SUCCESSFUL" "Unnecessary Decontamination Process Initiated.<size=0>////////////////////////////////////////////////////////////////////////////////</size><split>Fire Extinguishment status: <size=0>////////////////////////////////////////////////////////////////</size><color=green>SUCCESSFUL"
+
+
+else
+
+	Cassie Jingle "ATTENTION . INTERNAL jam_017_3 FIRE .G3 IN HEAVY CONTAINMENT . EXTINGUISHMENT SYSTEMS .G4 FAILED . UNNECESSARY EMERGENCY DECONTAMINATION .g1 COMMENCING IN TMINUS yield_01 {$hczdeconttime} minutes ." "Attention - <size=0>/////////////////////////////////////////////</size>Internal Fire in <color=yellow>Heavy Containment.</color><size=0>///////////////////////////////////////////////////////////////////////////////////</size><split>Extinguishment systems failed.<size=0>///////////////////////////////////////////////////////////////////////////////////////</size><split><color=red>Unnecessary Emergency Decontamination</color> commencing in T-<size=0>///////////////////////////////////////////////////////////////////</size>{$hczdeconttime} minutes."
+	$waitValA = Eval ($hczdeconttime * 60)
+	$waitValB = Eval ($waitValA - 30)
+	Wait {ToDuration $waitValB Seconds}
+	PlayAudio "Cassie_HCZD" "HCZD"
+	Cassie NoJingle "ad . . . . . . . . . . . . . ad . . . . . . . . . . . . . ad . . . . . . . . . . . . . ad . . . . . . . . . . . . . ad" "Attenion - <size=0>/////////////////////////////////////////////</size>Biological hazard identified.<size=0>//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</size><br>> Immediate evacuation of Heavy Containment required.<size=0>//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</size> <color=yellow>Checkpoints included.</color><size=0>//////////////////////////////////////////////////////////////////////</size><br>> Subsystem engaged.<size=0>////////////////////////////////////////////////////////////////////////</size><br>> Commencing <color=red>decontamination</color> in T-<size=0>//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</size>30 seconds."
+	
+	Wait 17s
+	OpenDoor HeavyContainment
+	OpenDoor HczCheckpoint
+	LockDoor HeavyContainment DecontEvacuate 
+	LockDoor HczCheckpoint DecontEvacuate 
+	
+	Wait 36s
+	CloseDoor HeavyContainment
+	CloseDoor HczCheckpoint
+	LockDoor HeavyContainment DecontLockdown
+	LockDoor HczCheckpoint DecontLockdown
+	
+	TransitionLightColor HeavyContainment #666699 1s
+	Wait 1s
+	TransitionLightColor HeavyContainment #FFFFFF 3s
+	
+	Wait 3s
+	GiveEffect @heavyContainmentPlayers Deafened 255
+	GiveEffect @heavyContainmentPlayers Blurred
+	
+	Wait 1s
+	GiveEffect @heavyContainmentPlayers Decontaminating 255
+
+	ResetLightColor heavyContainment
+	
+	Cassie Jingle "UNNECESSARY .G4 DECONTAMINATION PROCESS INITIATED . FIRE EXTINGUISHMENT STATUS .G6 jam_043_3 SUCCESSFUL" "Unnecessary Decontamination Process Initiated.<size=0>////////////////////////////////////////////////////////////////////////////////</size><split>Fire Extinguishment status: <size=0>////////////////////////////////////////////////////////////////</size><color=green>SUCCESSFUL"
