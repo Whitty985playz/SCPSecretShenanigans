@@ -1,4 +1,11 @@
-!-- WaitingForPlayers
+!-- OnEvent WaitingForPlayers
+
+$ssdatabase = DBExists "SCPSS"
+
+if $ssdatabase == false
+  CreateDB "SCPSS"
+  Print "[SCPSS] Database was not found -- Creating" red
+end
 
 Print "███████╗ ██████╗██████╗    ███████╗███████╗" Cyan
 Print "██╔════╝██╔════╝██╔══██╗██╗██╔════╝██╔════╝" Cyan
