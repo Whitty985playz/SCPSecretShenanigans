@@ -9,4 +9,4 @@ All of the scripts in this folder were made using a pre-release of Scripted Even
 | CustomSCPs | ❌ | ❌ ❌ |  |
 | EventScripts | ❌ | ❌ ❌ ❌ ❌ |  |
 | RoundEvents | ❌ | ❌ ❌ ❌ |  |
-| RoundScripts | ❌ | ✅ ❌ ❌ ❌ ❌ | Starting with this then working my way up. |
+| RoundScripts | ❌ | ❌ | Starting with this then working my way up. |
