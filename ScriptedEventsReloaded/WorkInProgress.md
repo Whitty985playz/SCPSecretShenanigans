@@ -6,7 +6,8 @@ All of the scripts in this folder were made using a pre-release of Scripted Even
 | Script Directory | Directory Completion Status | Script Completion | Notes
 | ---- | ---- | ---- | ---- |
 | BenefitsScripts | ❌ | ❌ ❌ ❌ ❌ |  |
-| CustomSCPs | ❌ | ❌ ❌ |  |
+| CustomSCPs | ❌ | ✅ ✅ |  |
 | EventScripts | ❌ | ❌ ❌ ❌ ❌ |  |
 | RoundEvents | ❌ | ❌ ❌ ❌ |  |
-| RoundScripts | ❌ | ❌ | Starting with this then working my way up. |
+| RoundScripts | ❌ | ⚠️ ✅ ✅ ❌ ❌ | Starting with this then working my way up. |
+| Miscellaneous | ❌ | ❌ |  |
