@@ -5,7 +5,7 @@
 
 ## Quick Overview
 
-This is just all the SCP: Secret Shenanigains Scripted Events scripts ported to Scripted Events Reloaded.
+This is just all the SCP: Secret Shenanigans Scripted Events scripts ported to Scripted Events Reloaded.
 
 The old scripts can be found in the `Archive` folder.
 
