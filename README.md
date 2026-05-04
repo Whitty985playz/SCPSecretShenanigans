@@ -9,6 +9,6 @@
 
 This is just all the SCP: Secret Shenanigains Scripted Events scripts ported to Scripted Events Reloaded.
 
-The old scripts can be found in the `Archive` folder.
+The old scripts can be found in the `InternalScripts` folder.
 
 > I am not writing any more than this, I can not be bothered to lmao - whitty
