@@ -1,5 +1,4 @@
-![SCPSS-PATREON](https://github.com/user-attachments/assets/9004ffad-78fa-4ada-9bc9-5f7676fdc172)
-[<img width="2500" height="1000" alt="SCP-SSSERPORT" src="https://github.com/user-attachments/assets/4ee62f77-9370-41a1-95d9-b164d1caedbf" />](https://patreon.com/secretshenanigans)
+![SCPSS-PATREON](https://github.com/user-attachments/assets/4ee62f77-9370-41a1-95d9-b164d1caedbf)
 
 
 # Scripts & Code | Infrastructure | Description/PasteBin
